@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="rosaApp">
+<head>
+<meta charset="UTF-8">
+<title>Rosa - Luxury Makeup & Skincare</title>
+<style>
+  /* CSS styles for the website */
+  body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #fff;
+    color: #333;
+    margin: 0;
+    padding: 0;
+  }
+  
+  header {
+    background-color: #f6d7c3;
+    padding: 10px 0;
+    text-align: center;
+    color: #333;
+  }
+  
+  nav {
+    background-color: #f6d7c3;
+    padding: 10px 0;
+    text-align: center;
+    color: #333;
+  }
+  
+  .product {
+    border: 1px solid #e0b0a1;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+    background-color: #fff;
+    float: left;
+    width: 200px;
+    color: #333;
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>Rosa - Luxury Makeup & Skincare</h1>
+</header>
+
+<nav>
+  <a href="#/">Home</a> | <a href="#/makeup">Makeup</a> | <a href="#/skincare">Skincare</a>
+</nav>
+
+<div ng-view></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.min.js"></script>
+<script>
+  var app = angular.module('rosaApp', ['ngRoute']);
+  
+  app.config(function($routeProvider) {
+    $routeProvider
+      .when('/', {
+        template: '<h2>Welcome to Rosa - Luxury Makeup & Skincare</h2>'
+      })
+      .when('/makeup', {
+        template: `
+          <div class="product">
+            <h3>Makeup Product 1</h3>
+            <p>Description of Makeup Product 1</p>
+          </div>
+          <div class="product">
+            <h3>Makeup Product 2</h3>
+            <p>Description of Makeup Product 2</p>
+          </div>
+        `
+      })
+      .when('/skincare', {
+        template: `
+          <div class="product">
+            <h3>Skincare Product 1</h3>
+            <p>Description of Skincare Product 1</p>
+          </div>
+          <div class="product">
+            <h3>Skincare Product 2</h3>
+            <p>Description of Skincare Product 2</p>
+          </div>
+        `
+      })
+      .otherwise({
+        redirectTo: '/'
+      });
+  });
+</script>
+</body>
+</html>
